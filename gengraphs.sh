@@ -4,12 +4,13 @@ set -e
 
 RRDFILE=monitor.rrd
 
+#DIR=~/public_html/2wire
 DIR=.
-IMAGEFILE1=$DIR/2wire/2wire1.png
-IMAGEFILE3=$DIR/2wire/2wire3.png
-IMAGEFILE14=$DIR/2wire/2wire14.png
-IMAGEFILE30=$DIR/2wire/2wire30.png
-IMAGEFILE365=$DIR/2wire/2wire365.png
+IMAGEFILE1=$DIR/2wire1.png
+IMAGEFILE3=$DIR/2wire3.png
+IMAGEFILE14=$DIR/2wire14.png
+IMAGEFILE30=$DIR/2wire30.png
+IMAGEFILE365=$DIR/2wire365.png
 
 
 LABELTEXT="Cowhouse Bandwidth"
