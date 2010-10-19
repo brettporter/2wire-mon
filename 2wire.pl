@@ -32,7 +32,7 @@ sub fetch_version5_stats () {
 	    if $html !~ m|<title>2WIRE MDC - Broadband Link Statistics</title>|;
 	$html =~ s/^.*?<div class="mdcpagetitlebar">//s
 	    or die "failed to find mdcpagetitlebar";
-	$html =~ s/^.*?<td colspan="10" class="mdcdotted">//s
+	$html =~ s/^.*<td colspan="10" class="mdcdotted">//s
 	    or die "failed to find mdcdotted";
 	my @headings;
 	while ($html =~ m|<tr>(.*?)</tr>|gs) {
