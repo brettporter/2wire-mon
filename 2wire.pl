@@ -4,7 +4,7 @@ use strict;
 use LWP::UserAgent;
 use RRDs;
 
-use constant HOMEPORTAL_VERSION => 6;
+use constant HOMEPORTAL_VERSION => 5;
 use constant HOMEPORTAL_URL => 'http://homeportal.gateway.2wire.net/xslt';
 use constant ADMIN_PASSWORD => 'your-router-password';        # only needed for version 5
 use constant RRD_FILENAME => "monitor.rrd";
