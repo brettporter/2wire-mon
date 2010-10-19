@@ -3,6 +3,8 @@
 set -e
 
 RRDFILE=monitor.rrd
+#RRDTOOL=rrdtool
+RRDTOOL=/usr/local/bin/rrdtool
 
 #DIR=~/public_html/2wire
 DIR=.
@@ -26,7 +28,7 @@ fi
 
 
 
-rrdtool graph $IMAGEFILE1 \
+$RRDTOOL graph $IMAGEFILE1 \
     -A -w600 -h480 --imgformat=PNG \
     --title="$LABELTEXT (last 24 hours) ... $(date)" \
     --vertical-label="Bytes/sec" \
@@ -42,7 +44,7 @@ rrdtool graph $IMAGEFILE1 \
     COMMENT:"\\l" >/dev/null
 
 
-rrdtool graph $IMAGEFILE3 \
+$RRDTOOL graph $IMAGEFILE3 \
     -A -w600 -h480 --imgformat=PNG \
     --title="$LABELTEXT (last 3 days) ... $(date)" \
     --vertical-label="Bytes/sec" \
@@ -61,7 +63,7 @@ rrdtool graph $IMAGEFILE3 \
 
 
 
-rrdtool graph $IMAGEFILE14 \
+$RRDTOOL graph $IMAGEFILE14 \
     -A -w600 -h480 --imgformat=PNG \
     --title="$LABELTEXT (last 14 days) ... $(date)" \
     --vertical-label="Bytes/sec" \
@@ -91,7 +93,7 @@ rrdtool graph $IMAGEFILE14 \
     COMMENT:"\\l" > /dev/null
 
 
-rrdtool graph $IMAGEFILE30 \
+$RRDTOOL graph $IMAGEFILE30 \
     -A -w640 -h480 --imgformat=PNG \
     --title="$LABELTEXT (last 30 days) ... $(date)" \
     --vertical-label="Bytes/sec" \
@@ -138,7 +140,7 @@ rrdtool graph $IMAGEFILE30 \
 
  
 
-rrdtool graph $IMAGEFILE365 \
+$RRDTOOL graph $IMAGEFILE365 \
     -A -w640 -h480 --imgformat=PNG \
     --title="$LABELTEXT (last year) ... $(date)" \
     --vertical-label="Bytes/sec" \
