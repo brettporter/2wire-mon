@@ -1,12 +1,15 @@
 #!/bin/sh
 
+set -e
+
 RRDFILE=monitor.rrd
 
-IMAGEFILE1=~/public_html/2wire/2wire1.png
-IMAGEFILE3=~/public_html/2wire/2wire3.png
-IMAGEFILE14=~/public_html/2wire/2wire14.png
-IMAGEFILE30=~/public_html/2wire/2wire30.png
-IMAGEFILE365=~/public_html/2wire/2wire365.png
+DIR=.
+IMAGEFILE1=$DIR/2wire/2wire1.png
+IMAGEFILE3=$DIR/2wire/2wire3.png
+IMAGEFILE14=$DIR/2wire/2wire14.png
+IMAGEFILE30=$DIR/2wire/2wire30.png
+IMAGEFILE365=$DIR/2wire/2wire365.png
 
 
 LABELTEXT="Cowhouse Bandwidth"
@@ -34,7 +37,7 @@ rrdtool graph $IMAGEFILE1 \
     DEF:output=$RRDFILE:output:AVERAGE \
     LINE1:input$DOWNCOLOR:"download" \
     LINE1:output$UPCOLOR:"upload" \
-    VRULE:$(date -d 'today 0:00' +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S +%s)$DAYCOLOR \
     COMMENT:"\\l" >/dev/null
 
 
@@ -49,10 +52,10 @@ rrdtool graph $IMAGEFILE3 \
     DEF:output=$RRDFILE:output:AVERAGE \
     LINE1:input$DOWNCOLOR:"download" \
     LINE1:output$UPCOLOR:"upload" \
-    VRULE:$(date -d 'today 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-1 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-2 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-3 day 0:00' +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-1d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-2d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-3d +%s)$DAYCOLOR \
     COMMENT:"\\l" >/dev/null
 
 
@@ -69,21 +72,21 @@ rrdtool graph $IMAGEFILE14 \
     DEF:output=$RRDFILE:output:AVERAGE \
     LINE1:input$DOWNCOLOR:"download" \
     LINE1:output$UPCOLOR:"upload" \
-    VRULE:$(date -d 'today 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-1 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-2 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-3 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-4 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-5 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-6 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-7 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-8 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-9 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-10 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-11 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-12 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-13 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-14 day 0:00' +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-1d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-2d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-3d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-4d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-5d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-6d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-7d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-8d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-9d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-10d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-11d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-12d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-13d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-14d +%s)$DAYCOLOR \
     COMMENT:"\\l" > /dev/null
 
 
@@ -99,37 +102,37 @@ rrdtool graph $IMAGEFILE30 \
     DEF:output=$RRDFILE:output:AVERAGE \
     LINE1:input$DOWNCOLOR:"download" \
     LINE1:output$UPCOLOR:"upload" \
-    VRULE:$(date -d 'today 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-1 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-2 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-3 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-4 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-5 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-6 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-7 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-8 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-9 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-10 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-11 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-12 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-13 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-14 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-15 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-16 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-17 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-18 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-19 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-20 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-21 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-22 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-23 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-24 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-25 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-26 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-27 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-28 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-29 day 0:00' +%s)$DAYCOLOR \
-    VRULE:$(date -d '-30 day 0:00' +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-1d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-2d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-3d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-4d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-5d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-6d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-7d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-8d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-9d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-10d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-11d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-12d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-13d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-14d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-15d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-16d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-17d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-18d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-19d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-20d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-21d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-22d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-23d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-24d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-25d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-26d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-27d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-28d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-29d +%s)$DAYCOLOR \
+    VRULE:$(date -v0H -v0M -v0S -v-30d +%s)$DAYCOLOR \
     COMMENT:"\\l" > /dev/null
 
  
