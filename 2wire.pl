@@ -8,6 +8,7 @@ use constant HOMEPORTAL_VERSION => 5;
 use constant HOMEPORTAL_URL => 'http://homeportal.gateway.2wire.net/xslt';
 use constant ADMIN_PASSWORD => 'your-router-password';        # only needed for version 5
 use constant RRD_FILENAME => "monitor.rrd";
+use constant CSV_FILENAME => "monitor.csv";
 use constant DEBUG => 0;
 
 
@@ -123,5 +124,21 @@ RRDs::update (RRD_FILENAME, "--template", "input:output",
               "N:" . $stats{'Receive'}{'Bytes'} .
               ':' . $stats{'Transmit'}{'Bytes'})
     or warn "Failed to update RRD";
+
+use POSIX qw(strftime);
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = gmtime;
+if ($min == 0 || $min == 30 || $min == 15 || $min == 45) {
+    if (not -e CSV_FILENAME) {
+        open (FILE, ">>" . CSV_FILENAME);
+        print FILE "Date,Receive,Transmit\n";
+    }
+    else {
+        open (FILE, ">>" . CSV_FILENAME);
+    }
+
+    my $now_string = strftime "%FT%H:%M:%SZ", gmtime;
+    print FILE "$now_string,$stats{'Receive'}{'Bytes'},$stats{'Transmit'}{'Bytes'}\n";
+    close (FILE);
+}
 
 exit 0;
